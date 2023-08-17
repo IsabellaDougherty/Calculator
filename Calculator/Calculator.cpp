@@ -2,6 +2,8 @@
 controlled by a menu and
 divided into separate functions */
 #include<iostream>
+#include<ctime>
+#include<cmath>
 using namespace std;
 //------------------------------ Function Prototypes ------------------------------
 void print_menu();
@@ -11,10 +13,12 @@ double minimum(double, double);
 double absoluteValue(double);
 //------------------------------ Main ------------------------------
 int main() {
+	srand(time(NULL));
+	double pi = std::acos(-1);
 	double operand1, operand2, answer;
 	int choice, valid_choice; 
 	cout << "Author: Isabella Dougherty\nCreated 08/16/2023" << endl;
-	cout << "The following is a simple calculator program. You'll be abale to add or divide two numbers here.";
+	cout << "The following is a simple geometry program. You'll be abale to use this as a simple calculator as well as\n utilize it to calculate simple geometric areas/circumference.";
 	do {
 		print_menu();
 		cin >> choice;
@@ -57,6 +61,37 @@ int main() {
 			answer = absoluteValue(operand1);
 			cout << endl << "The absolute value of your input is: " << answer << endl;
 			break;
+		case 7:
+			cout << "Your input will be the maximum value for the random number to be generated. " << endl;
+			operand1 = get_value();
+			answer = 1 + rand() % (int)operand1;
+			cout << "Your random number is: " << answer << endl;
+			break;
+		case 8:
+			operand1 = get_value();
+			operand2 = get_value();
+			answer = operand1 * operand2;
+			cout << "The area of your rectangle is: " << answer << endl;
+			break;
+		case 9:
+			cout << "The first number should be the height and the second should be the base." << endl;
+			operand1 = get_value();
+			operand2 = get_value();
+			answer = (operand1 * operand2) / 2;
+			cout << "The area of your triangle is: " << answer << endl;
+			break;
+		case 10:
+			cout << "Enter the radius of your circle." << endl;
+			operand1 = get_value();
+			answer = pi * operand1 * operand1;
+			cout << "The area of your circle is: " << answer << endl;
+			break;
+		case 11:
+			cout << "Enter the radius of your circle." << endl;
+			operand1 = get_value();
+			answer = 2 * pi * operand1;
+			cout << "The circumferance of your circle is: " << answer << endl;
+			break;
 		default:
 			valid_choice = 0;
 			cout << "Invalid Choice." << endl;
@@ -98,6 +133,11 @@ void print_menu() {
 	cout << "Multiply (4)" << endl;
 	cout << "Minimum (5)" << endl;
 	cout << "Absolute Value (6)" << endl;
+	cout << "Random Number (7)" << endl;
+	cout << "Rectangle Area (8)" << endl;
+	cout << "Triangle Area (9)" << endl;
+	cout << "Circle Area (10)" << endl;
+	cout << "Circle Circumferance (11)" << endl;
 	cout << "Exit (0)" << endl;
 	cout << "Enter your choice: ";
 }
